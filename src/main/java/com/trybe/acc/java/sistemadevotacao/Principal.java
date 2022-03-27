@@ -10,6 +10,8 @@ public class Principal {
 
     Scanner scanner = new Scanner(System.in);
     short cadastrarCandidato = 1;
+    short cadastrarEleitor = 1;
+    short votar = 1;
 
     try {
       while (cadastrarCandidato == 1) {
@@ -28,7 +30,7 @@ public class Principal {
           System.out.println("Entre com o número da pessoa candidata:");
           short numero = scanner.nextShort();
 
-          votacao.setListaCandidatos(nome, numero);
+          votacao.cadastrarPessoaCandidata(nome, numero);
 
         } else if (cadastrarCandidato == 2) {
           scanner.close();
@@ -39,6 +41,63 @@ public class Principal {
           scanner.close();
         }
       }
+
+      while (cadastrarEleitor == 1) {
+        System.out.println("\n");
+        System.out.println("Cadastrar pessoa eleitora?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+        System.out.println("Entre com o número correspondente à opção desejada:\n");
+
+        cadastrarEleitor = scanner.nextShort();
+        System.out.println("\n");
+
+        if (cadastrarEleitor == 1) {
+          System.out.println("Entre com o nome da pessoa eleitora:");
+          String nome = scanner.next();
+          System.out.println("Entre com o CPF da pessoa eleitora:");
+          String cpf = scanner.next();
+
+          votacao.cadastrarPessoaEleitora(nome, cpf);
+
+        } else if (cadastrarEleitor == 2) {
+          scanner.close();
+
+        } else if (cadastrarEleitor != 1 && cadastrarEleitor != 2) {
+          System.out.println("Opção inválida!");
+          cadastrarEleitor = scanner.nextShort();
+          scanner.close();
+        }
+      }
+
+      while (votar == 1) {
+        System.out.println("\n");
+        System.out.println("Entre com o número correspondente à opção desejada:");
+        System.out.println("1 - Votar");
+        System.out.println("2 - Resultado Parcial");
+        System.out.println("3 - Finalizar Votação");
+
+        votar = scanner.nextShort();
+        System.out.println("\n");
+
+        if (votar == 1) {
+          System.out.println("Entre com o CPF da pessoa eleitora:");
+          String cpf = scanner.next();
+          System.out.println("Entre com o número da pessoa candidata:");
+          short numero = scanner.nextShort();
+
+          votacao.votar(cpf, numero);
+
+        } else if (votar == 2) {
+          scanner.close();
+
+        } else if (votar != 1 && votar != 2) {
+          System.out.println("Opção inválida!");
+          votar = scanner.nextShort();
+          scanner.close();
+        }
+      }
+
     } catch (Exception err) {
       System.out.println("Erro: " + err.getMessage());
     }

@@ -1,12 +1,12 @@
 package com.trybe.acc.java.sistemadevotacao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import com.trybe.acc.java.sistemadevotacao.Principal;
 
 public class PrincipalTest {
 
@@ -15,11 +15,19 @@ public class PrincipalTest {
   public void testePrincipal() {
 
     String userInput =
-        String.format("1%sPessoaCandidata%s1%s2%s1%sPessoaEleitora%s1%s2%s1%s1%s1%s3",
-            System.lineSeparator(), System.lineSeparator(), System.lineSeparator(),
-            System.lineSeparator(), System.lineSeparator(), System.lineSeparator(),
-            System.lineSeparator(), System.lineSeparator(), System.lineSeparator(),
-            System.lineSeparator(), System.lineSeparator());
+        String.format(
+            "1%sPessoaCandidata%s1%s2%s1%sPessoaEleitora%s1%s2%s1%s1%s1%s3",
+            System.lineSeparator(),
+            System.lineSeparator(),
+            System.lineSeparator(),
+            System.lineSeparator(),
+            System.lineSeparator(),
+            System.lineSeparator(),
+            System.lineSeparator(),
+            System.lineSeparator(),
+            System.lineSeparator(),
+            System.lineSeparator(),
+            System.lineSeparator());
 
     ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
     System.setIn(bais);
@@ -36,8 +44,5 @@ public class PrincipalTest {
     String saida = linha[linha.length - 1];
 
     assertEquals(esperado, saida);
-
   }
-
-
 }

@@ -30,4 +30,6 @@ public class PessoaEleitora {
   public void setCpf(String cpf) {
     this.cpf = cpf;
   }
+
+  public void voto(String cpf, int numero) {}
 }

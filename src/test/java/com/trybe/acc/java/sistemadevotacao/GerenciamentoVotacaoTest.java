@@ -1,11 +1,11 @@
 package com.trybe.acc.java.sistemadevotacao;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import com.trybe.acc.java.sistemadevotacao.GerenciamentoVotacao;
 
 public class GerenciamentoVotacaoTest {
   @Test
@@ -16,7 +16,6 @@ public class GerenciamentoVotacaoTest {
     // testando cadastro de pessoa candidata e eleitora
     objetoTeste.cadastrarPessoaCandidata("Pessoa Candidata", 1);
     objetoTeste.cadastrarPessoaEleitora("Pessoa Eleitora", String.valueOf(1));
-
 
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     PrintStream printStream = new PrintStream(baos);
@@ -30,7 +29,6 @@ public class GerenciamentoVotacaoTest {
     String saida = String.join(",", linha);
 
     assertTrue(saida.contains("Pessoa Candidata"));
-
   }
 
   @Test
@@ -49,10 +47,7 @@ public class GerenciamentoVotacaoTest {
     String saida = String.join(",", linha);
 
     assertTrue(saida.contains("utilizado"));
-
-
   }
-
 
   @Test
   @DisplayName("12 - Testando cadastro de pessoa eleitora repetido")
@@ -70,7 +65,6 @@ public class GerenciamentoVotacaoTest {
     String saida = String.join(",", linha);
 
     assertTrue(saida.contains("eleitora"));
-
   }
 
   @Test
@@ -82,7 +76,6 @@ public class GerenciamentoVotacaoTest {
     objetoTeste.cadastrarPessoaEleitora("Pessoa Eleitora", String.valueOf(1));
     objetoTeste.votar(String.valueOf(1), 1);
 
-
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     PrintStream printStream = new PrintStream(baos);
     System.setOut(printStream);
@@ -93,9 +86,7 @@ public class GerenciamentoVotacaoTest {
     String saida = String.join(",", linha);
 
     assertTrue(saida.contains("eleitora"));
-
   }
-
 
   @Test
   @DisplayName("14 - Testando método mostarResultado e calcularPorcentagemVotos")
@@ -109,7 +100,6 @@ public class GerenciamentoVotacaoTest {
     objetoTeste.cadastrarPessoaEleitora("Pessoa Eleitora 1", String.valueOf(1));
     objetoTeste.cadastrarPessoaEleitora("Pessoa Eleitora 2", String.valueOf(2));
     objetoTeste.cadastrarPessoaEleitora("Pessoa Eleitora 3", String.valueOf(3));
-
 
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     PrintStream printStream = new PrintStream(baos);
@@ -125,6 +115,5 @@ public class GerenciamentoVotacaoTest {
     String saida = String.join(",", linha);
 
     assertTrue(saida.contains("33"));
-
   }
 }

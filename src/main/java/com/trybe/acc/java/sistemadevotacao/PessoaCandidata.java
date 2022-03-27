@@ -6,9 +6,9 @@ package com.trybe.acc.java.sistemadevotacao;
 // etapa de cadastro de pessoas eleitoras;
 public class PessoaCandidata {
   private String nome;
-  private short numero;
+  private int numero;
 
-  public PessoaCandidata(String nome, short numero) {
+  public PessoaCandidata(String nome, int numero) {
     this.nome = nome;
     this.numero = numero;
   }
@@ -21,11 +21,11 @@ public class PessoaCandidata {
     this.nome = nome;
   }
 
-  public short getNumero() {
+  public int getNumero() {
     return numero;
   }
 
-  public void setNumero(short numero) {
+  public void setNumero(int numero) {
     this.numero = numero;
   }
 }

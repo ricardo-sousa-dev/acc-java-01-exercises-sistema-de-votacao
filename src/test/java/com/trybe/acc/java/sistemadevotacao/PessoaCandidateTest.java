@@ -1,9 +1,9 @@
 package com.trybe.acc.java.sistemadevotacao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import com.trybe.acc.java.sistemadevotacao.PessoaCandidata;
 
 public class PessoaCandidateTest {
   @Test
