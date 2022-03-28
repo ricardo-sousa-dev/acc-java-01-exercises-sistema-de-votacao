@@ -86,7 +86,10 @@ public class GerenciamentoVotacao {
     return votos;
   }
 
-  public void resultadoParcial() {
+  public void mostrarResultado() {
+    // DecimalFormat df = new DecimalFormat();
+    // df.applyPattern("#,#0.0 %");
+
     String resultado = "";
     for (PessoaCandidata candidato : listaCandidatos) {
       resultado +=
@@ -96,7 +99,8 @@ public class GerenciamentoVotacao {
               + contagemVotos(candidato.getNumero())
               + " votos"
               + "( "
-              + (contagemVotos(candidato.getNumero()) / votantes.size()) * 100
+              + String.format(
+                  "%.1f", (contagemVotos(candidato.getNumero()) * 100.0) / listaEleitores.size())
               + "%"
               + " )"
               + "\n";
@@ -104,10 +108,38 @@ public class GerenciamentoVotacao {
     System.out.println(resultado + "\n" + "Total de votos: " + votantes.size());
   }
 
-  public void mostrarResultado() {
-    System.out.println("Resultado da votação:");
-    for (PessoaCandidata pessoa : listaCandidatos) {
-      System.out.println("Candidato " + pessoa.getNumero() + ": " + pessoa.getNome());
-    }
-  }
+  // public void setup() {
+  // cadastrarPessoaCandidata("João", 1);
+  // cadastrarPessoaCandidata("Maria", 2);
+  // cadastrarPessoaCandidata("Pedro", 3);
+  // cadastrarPessoaCandidata("Ana", 4);
+  // cadastrarPessoaCandidata("José", 5);
+  // cadastrarPessoaCandidata("Paulo", 6);
+  // cadastrarPessoaCandidata("Júlia", 7);
+  // cadastrarPessoaCandidata("Carla", 8);
+  // cadastrarPessoaCandidata("Paula", 9);
+  // cadastrarPessoaCandidata("Ana Paula", 10);
+
+  // cadastrarPessoaEleitora("João", "123456789-0");
+  // cadastrarPessoaEleitora("Maria", "987654321-1");
+  // cadastrarPessoaEleitora("Pedro", "123456789-2");
+  // cadastrarPessoaEleitora("Ana", "987654321-3");
+  // cadastrarPessoaEleitora("José", "123456789-4");
+  // cadastrarPessoaEleitora("Paulo", "987654321-5");
+  // cadastrarPessoaEleitora("Júlia", "123456789-6");
+  // cadastrarPessoaEleitora("Carla", "987654321-7");
+  // cadastrarPessoaEleitora("Paula", "123456789-8");
+  // cadastrarPessoaEleitora("Ana Paula", "987654321-9");
+
+  // votar("123456789-0", 1);
+  // votar("987654321-1", 1);
+  // votar("123456789-2", 2);
+  // votar("987654321-3", 2);
+  // votar("123456789-4", 2);
+  // votar("987654321-5", 3);
+  // votar("123456789-6", 3);
+  // votar("987654321-7", 3);
+  // votar("123456789-8", 3);
+  // votar("987654321-9", 4);
+  // }
 }

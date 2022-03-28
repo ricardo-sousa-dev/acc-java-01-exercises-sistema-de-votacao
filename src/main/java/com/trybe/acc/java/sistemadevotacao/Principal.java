@@ -13,9 +13,12 @@ public class Principal {
     short cadastrarEleitor = 1;
     short votar = 1;
 
+    // votacao.setup();
+
     try {
       while (cadastrarCandidato == 1) {
         System.out.println("\n");
+        System.out.println("----------- Bem-vindo ao Sistema de Votação -----------\n");
         System.out.println("Cadastrar pessoa candidata?");
         System.out.println("1 - Sim");
         System.out.println("2 - Não");
@@ -37,10 +40,10 @@ public class Principal {
           cadastrarCandidato = scanner.nextShort();
         }
       }
-      System.out.println("CANDIDATOS: " + "\n" + votacao.getListaCandidatos());
 
       while (cadastrarEleitor == 1) {
-        System.out.println("\n");
+        System.out.println("\n\n");
+        System.out.println("----------- Cadastre as pessoas eleitoras -----------\n");
         System.out.println("Cadastrar pessoa eleitora?");
         System.out.println("1 - Sim");
         System.out.println("2 - Não");
@@ -62,10 +65,10 @@ public class Principal {
           cadastrarEleitor = scanner.nextShort();
         }
       }
-      System.out.println("ELEITORES: " + "\n" + votacao.getListaEleitores());
 
       while (votar == 1 || votar == 2) {
-        System.out.println("\n");
+        System.out.println("\n\n");
+        System.out.println("----------- Votação iniciada! -----------\n");
         System.out.println("Entre com o número correspondente à opção desejada:");
         System.out.println("1 - Votar");
         System.out.println("2 - Resultado Parcial");
@@ -83,18 +86,16 @@ public class Principal {
           votacao.votar(cpf, numero);
 
         } else if (votar == 2) {
-          votacao.resultadoParcial();
+          votacao.mostrarResultado();
 
-        } else if (votar != 1 && votar != 2) {
+        } else if (votar != 1 && votar != 2 && votar != 3) {
           System.out.println("Opção inválida!");
-          votar = scanner.nextShort();
-          scanner.close();
+          // votar = scanner.nextShort();
         } else {
-          scanner.close();
-          // votacao.finalizarVotacao();
+          votacao.mostrarResultado();
         }
       }
-
+      scanner.close();
     } catch (Exception err) {
       System.out.println("Erro: " + err.getMessage());
     }
