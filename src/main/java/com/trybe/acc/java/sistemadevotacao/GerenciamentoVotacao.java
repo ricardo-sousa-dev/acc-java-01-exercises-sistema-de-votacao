@@ -59,7 +59,7 @@ public class GerenciamentoVotacao {
     for (PessoaEleitora pessoa : listaEleitores) {
       if (pessoa.getCpf().equals(cpf)) {
         if (votantes.contains(cpf)) {
-          System.out.println("Você já votou!");
+          System.out.println("Pessoa eleitora já votou!");
           return;
         }
         for (PessoaCandidata pessoaCandidata : listaCandidatos) {
