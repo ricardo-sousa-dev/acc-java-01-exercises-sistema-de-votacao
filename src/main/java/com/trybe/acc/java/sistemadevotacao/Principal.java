@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Principal {
 
-  /** Iniciando o processo de votação */
+  /** Iniciando o processo de votação. */
   public static void main(String[] args) {
     GerenciamentoVotacao votacao = new GerenciamentoVotacao();
 

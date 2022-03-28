@@ -1,6 +1,6 @@
 package com.trybe.acc.java.sistemadevotacao;
 
-/** Classe que cria um eleitor */
+/** Classe que cria um eleitor. */
 public class PessoaEleitora {
   private String nome;
   private String cpf;

@@ -17,11 +17,7 @@ public class GerenciamentoVotacao {
 
   public GerenciamentoVotacao() {}
 
-  /**
-   * Adiciona uma pessoa candidata a lista de candidatos.
-   *
-   * @param pessoaCandidata Pessoa candidata a ser adicionada
-   */
+  /** Adiciona uma pessoa candidata a lista de candidatos. */
   public void cadastrarPessoaCandidata(String nome, int numero) {
     PessoaCandidata pessoaCandidata = new PessoaCandidata(nome, numero);
 
@@ -34,11 +30,7 @@ public class GerenciamentoVotacao {
     listaCandidatos.add(pessoaCandidata);
   }
 
-  /**
-   * Adiciona uma pessoa eleitora a lista de eleitores.
-   *
-   * @param pessoaEleitora Pessoa eleitora a ser adicionada
-   */
+  /** Adiciona uma pessoa eleitora a lista de eleitores. */
   public void cadastrarPessoaEleitora(String nome, String cpf) {
     PessoaEleitora eleitor = new PessoaEleitora(nome, cpf);
 
@@ -51,11 +43,7 @@ public class GerenciamentoVotacao {
     listaEleitores.add(eleitor);
   }
 
-  /**
-   * Adiciona um voto a lista de votos.
-   *
-   * @param voto Voto a ser adicionado
-   */
+  /** Adiciona um voto a lista de votos. */
   public void votar(String cpf, int numero) {
     for (PessoaEleitora pessoa : listaEleitores) {
       if (pessoa.getCpf().equals(cpf)) {

@@ -1,6 +1,6 @@
 package com.trybe.acc.java.sistemadevotacao;
 
-/** Classe que cria um candidato */
+/** Classe que cria um candidato. */
 public class PessoaCandidata {
   private String nome;
   private int numero;
