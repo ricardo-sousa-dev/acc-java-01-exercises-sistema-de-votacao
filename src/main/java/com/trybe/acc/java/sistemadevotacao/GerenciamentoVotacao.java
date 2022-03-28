@@ -2,8 +2,12 @@ package com.trybe.acc.java.sistemadevotacao;
 
 import java.util.ArrayList;
 
-// Iniciar processo votação: nessa etapa é iniciado o processo de votação, em que foi solicitado, na
-// demanda, um menu que ofereça as opções de votar, ver resultado parcial e finalizar a votação.
+/**
+ * Classe que gerencia as votacoes.
+ *
+ * @author Ricardo Sousa
+ * @version 1.0
+ */
 public class GerenciamentoVotacao {
   private ArrayList<PessoaCandidata> listaCandidatos = new ArrayList<PessoaCandidata>();
   private ArrayList<PessoaEleitora> listaEleitores = new ArrayList<PessoaEleitora>();
@@ -13,24 +17,11 @@ public class GerenciamentoVotacao {
 
   public GerenciamentoVotacao() {}
 
-  public ArrayList<Integer> getListaCandidatos() {
-    ArrayList<Integer> candidatos = new ArrayList<Integer>();
-
-    for (PessoaCandidata pessoaCandidata : listaCandidatos) {
-      candidatos.add(pessoaCandidata.getNumero());
-    }
-    return candidatos;
-  }
-
-  public ArrayList<String> getListaEleitores() {
-    ArrayList<String> eleitores = new ArrayList<String>();
-
-    for (PessoaEleitora pessoaEleitora : listaEleitores) {
-      eleitores.add(pessoaEleitora.getCpf());
-    }
-    return eleitores;
-  }
-
+  /**
+   * Adiciona uma pessoa candidata a lista de candidatos.
+   *
+   * @param pessoaCandidata Pessoa candidata a ser adicionada
+   */
   public void cadastrarPessoaCandidata(String nome, int numero) {
     PessoaCandidata pessoaCandidata = new PessoaCandidata(nome, numero);
 
@@ -43,6 +34,11 @@ public class GerenciamentoVotacao {
     listaCandidatos.add(pessoaCandidata);
   }
 
+  /**
+   * Adiciona uma pessoa eleitora a lista de eleitores.
+   *
+   * @param pessoaEleitora Pessoa eleitora a ser adicionada
+   */
   public void cadastrarPessoaEleitora(String nome, String cpf) {
     PessoaEleitora eleitor = new PessoaEleitora(nome, cpf);
 
@@ -55,6 +51,11 @@ public class GerenciamentoVotacao {
     listaEleitores.add(eleitor);
   }
 
+  /**
+   * Adiciona um voto a lista de votos.
+   *
+   * @param voto Voto a ser adicionado
+   */
   public void votar(String cpf, int numero) {
     for (PessoaEleitora pessoa : listaEleitores) {
       if (pessoa.getCpf().equals(cpf)) {
@@ -75,6 +76,7 @@ public class GerenciamentoVotacao {
     System.out.println("CPF ou número inválido!");
   }
 
+  /** Retorna a quantidade de votos do candidato. */
   public Integer contagemVotos(int numero) {
     Integer votos = 0;
 
@@ -86,10 +88,8 @@ public class GerenciamentoVotacao {
     return votos;
   }
 
+  /** Mostra o resultado da votação. */
   public void mostrarResultado() {
-    // DecimalFormat df = new DecimalFormat();
-    // df.applyPattern("#,#0.0 %");
-
     String resultado = "";
     for (PessoaCandidata candidato : listaCandidatos) {
       resultado +=
