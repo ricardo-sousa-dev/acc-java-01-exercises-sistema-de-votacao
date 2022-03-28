@@ -1,11 +1,6 @@
 package com.trybe.acc.java.sistemadevotacao;
 
-// Cadastrar pessoas eleitoras: aqui é preciso ter um menu que possibilite o cadastro de pessoas
-// eleitoras, similar ao menu do cadastro de pessoas candidatas. Finalizado o cadastro, deve-se
-// voltar ao estado inicial do menu de cadastro de pessoas eleitoras para oferecer a oportunidade de
-// cadastrar uma nova pessoa. Quando não houver mais pessoas eleitoras para serem cadastradas, o
-// sistema deve seguir para a etapa de votação;
-
+/** Classe que cria um eleitor */
 public class PessoaEleitora {
   private String nome;
   private String cpf;

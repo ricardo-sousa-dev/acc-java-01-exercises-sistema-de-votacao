@@ -1,6 +1,6 @@
 package com.trybe.acc.java.sistemadevotacao;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Principal {
 
