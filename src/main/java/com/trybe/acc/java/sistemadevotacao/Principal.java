@@ -32,15 +32,12 @@ public class Principal {
 
           votacao.cadastrarPessoaCandidata(nome, numero);
 
-        } else if (cadastrarCandidato == 2) {
-          scanner.close();
-
         } else if (cadastrarCandidato != 1 && cadastrarCandidato != 2) {
           System.out.println("Opção inválida!");
           cadastrarCandidato = scanner.nextShort();
-          scanner.close();
         }
       }
+      System.out.println("CANDIDATOS: " + "\n" + votacao.getListaCandidatos());
 
       while (cadastrarEleitor == 1) {
         System.out.println("\n");
@@ -60,17 +57,14 @@ public class Principal {
 
           votacao.cadastrarPessoaEleitora(nome, cpf);
 
-        } else if (cadastrarEleitor == 2) {
-          scanner.close();
-
         } else if (cadastrarEleitor != 1 && cadastrarEleitor != 2) {
           System.out.println("Opção inválida!");
           cadastrarEleitor = scanner.nextShort();
-          scanner.close();
         }
       }
+      System.out.println("ELEITORES: " + "\n" + votacao.getListaEleitores());
 
-      while (votar == 1) {
+      while (votar == 1 || votar == 2) {
         System.out.println("\n");
         System.out.println("Entre com o número correspondente à opção desejada:");
         System.out.println("1 - Votar");
@@ -89,12 +83,15 @@ public class Principal {
           votacao.votar(cpf, numero);
 
         } else if (votar == 2) {
-          scanner.close();
+          votacao.resultadoParcial();
 
         } else if (votar != 1 && votar != 2) {
           System.out.println("Opção inválida!");
           votar = scanner.nextShort();
           scanner.close();
+        } else {
+          scanner.close();
+          // votacao.finalizarVotacao();
         }
       }
 

@@ -7,6 +7,7 @@ package com.trybe.acc.java.sistemadevotacao;
 public class PessoaCandidata {
   private String nome;
   private int numero;
+  private short votos;
 
   public PessoaCandidata(String nome, int numero) {
     this.nome = nome;
@@ -27,5 +28,13 @@ public class PessoaCandidata {
 
   public void setNumero(int numero) {
     this.numero = numero;
+  }
+
+  public short getVotos() {
+    return votos;
+  }
+
+  public void setVotos() {
+    this.votos += votos;
   }
 }

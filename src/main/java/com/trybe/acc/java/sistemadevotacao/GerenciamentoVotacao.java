@@ -7,29 +7,40 @@ import java.util.ArrayList;
 public class GerenciamentoVotacao {
   private ArrayList<PessoaCandidata> listaCandidatos = new ArrayList<PessoaCandidata>();
   private ArrayList<PessoaEleitora> listaEleitores = new ArrayList<PessoaEleitora>();
+
   private ArrayList<String> votantes = new ArrayList<String>();
   private ArrayList<Integer> votos = new ArrayList<Integer>();
 
   public GerenciamentoVotacao() {}
 
-  public ArrayList<PessoaCandidata> getListaCandidatos() {
-    return listaCandidatos;
+  public ArrayList<Integer> getListaCandidatos() {
+    ArrayList<Integer> candidatos = new ArrayList<Integer>();
+
+    for (PessoaCandidata pessoaCandidata : listaCandidatos) {
+      candidatos.add(pessoaCandidata.getNumero());
+    }
+    return candidatos;
   }
 
-  public ArrayList<PessoaEleitora> getListaEleitores() {
-    return listaEleitores;
+  public ArrayList<String> getListaEleitores() {
+    ArrayList<String> eleitores = new ArrayList<String>();
+
+    for (PessoaEleitora pessoaEleitora : listaEleitores) {
+      eleitores.add(pessoaEleitora.getCpf());
+    }
+    return eleitores;
   }
 
   public void cadastrarPessoaCandidata(String nome, int numero) {
-    PessoaCandidata candidato = new PessoaCandidata(nome, numero);
+    PessoaCandidata pessoaCandidata = new PessoaCandidata(nome, numero);
 
     for (PessoaCandidata pessoa : listaCandidatos) {
       if (pessoa.getNumero() == numero) {
-        System.out.println("Número já cadastrado!");
+        System.out.println("Número já utilizado!");
         return;
       }
     }
-    listaCandidatos.add(candidato);
+    listaCandidatos.add(pessoaCandidata);
   }
 
   public void cadastrarPessoaEleitora(String nome, String cpf) {
@@ -37,7 +48,7 @@ public class GerenciamentoVotacao {
 
     for (PessoaEleitora pessoa : listaEleitores) {
       if (pessoa.getCpf().equals(cpf)) {
-        System.out.println("CPF já cadastrado!");
+        System.out.println("Pessoa eleitora já cadastrado!");
         return;
       }
     }
@@ -55,13 +66,42 @@ public class GerenciamentoVotacao {
           if (pessoaCandidata.getNumero() == numero) {
             votantes.add(cpf);
             votos.add(numero);
-            pessoa.voto(cpf, numero);
+            pessoaCandidata.setVotos();
             return;
           }
         }
       }
     }
     System.out.println("CPF ou número inválido!");
+  }
+
+  public Integer contagemVotos(int numero) {
+    Integer votos = 0;
+
+    for (Integer voto : this.votos) {
+      if (voto == numero) {
+        votos++;
+      }
+    }
+    return votos;
+  }
+
+  public void resultadoParcial() {
+    String resultado = "";
+    for (PessoaCandidata candidato : listaCandidatos) {
+      resultado +=
+          "Nome: "
+              + candidato.getNome()
+              + " - "
+              + contagemVotos(candidato.getNumero())
+              + " votos"
+              + "( "
+              + (contagemVotos(candidato.getNumero()) / votantes.size()) * 100
+              + "%"
+              + " )"
+              + "\n";
+    }
+    System.out.println(resultado + "\n" + "Total de votos: " + votantes.size());
   }
 
   public void mostrarResultado() {
